@@ -1,7 +1,8 @@
 from flask import Flask
 from flask_jwt_extended import JWTManager
-from config import Config
-from models import db
+from backend.config import Config
+from backend.models import db
+from backend.routes.auth import auth_bp
 
 def create_app():
     app = Flask(__name__)
@@ -10,12 +11,18 @@ def create_app():
     db.init_app(app)
     JWTManager(app)
 
+    app.register_blueprint(auth_bp, url_prefix="/auth")
+
     with app.app_context():
         db.create_all()
 
+    @app.route("/")
+    def index():
+        return {
+            "status": "Placement Portal API running",
+            "version": "v2"
+        }
+    
     return app
 
-app = create_app()
 
-if __name__ == "__main__":
-    app.run(debug=True)
