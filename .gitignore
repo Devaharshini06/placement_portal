@@ -11,7 +11,7 @@ celerybeat-schedule
 
 # Generated files
 *.csv
-*.html
+!frontend/index.html
 
 # OS junk
 .DS_Store
