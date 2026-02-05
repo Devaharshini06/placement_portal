@@ -1,0 +1,18 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Database
+*.db
+
+# Celery / Redis
+celerybeat-schedule
+
+# Generated files
+*.csv
+*.html
+
+# OS junk
+.DS_Store
+Thumbs.db
